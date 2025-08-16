@@ -30,4 +30,8 @@ public class CafeKiosk {
     public void add(Beverage beverage) {
         beverages.add(beverage);
     }
+
+    public Order createOrder() {
+        return new Order(LocalDateTime.now(), beverages);
+    }
 }
