@@ -3,8 +3,6 @@ package sample.cafekiosk.unit;
 import org.junit.jupiter.api.Test;
 import sample.cafekiosk.unit.beverage.Americano;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class CafeKioskTest {
 
     @Test
