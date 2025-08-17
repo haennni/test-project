@@ -11,7 +11,7 @@ import java.util.List;
 
 @Getter
 public class CafeKiosk {
-    public static final LocalTime SHOP_OPEN_TIME = LocalTime.of(10, 00);
+    public static final LocalTime SHOP_OPEN_TIME = LocalTime.of(19, 00);
     public static final LocalTime SHOP_CLOSE_TIME = LocalTime.of(22, 00);
 
     private final List<Beverage> beverages = new ArrayList<>();

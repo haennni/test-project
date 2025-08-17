@@ -106,4 +106,21 @@ class CafeKioskTest {
         // 주문의 음료는 총 2개이다.
         assertThat(order.getOrderItem()).hasSize(2);
     }
+
+    @Test
+    void falseCreateOrder() {
+        CafeKiosk cafekiosk = new CafeKiosk();
+        Americano americano = new Americano();
+
+        cafekiosk.add(americano, 2);
+
+        Order order = cafekiosk.createOrder();
+
+        // 주문의 음료 리스트가 비어있지않아야한다.
+        assertThat(order.getOrderItem()).isNotNull();
+        // 주문의 첫 번째 음료 리스트는 아메리카노이다.
+        assertThat(order.getOrderItem().get(0).getName()).isEqualTo("아메리카노");
+        // 주문의 음료는 총 2개이다.
+        assertThat(order.getOrderItem()).hasSize(2);
+    }
 }
