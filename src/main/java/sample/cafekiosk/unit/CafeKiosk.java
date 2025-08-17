@@ -21,7 +21,7 @@ public class CafeKiosk {
     }
 
     public void add(Beverage beverage, int count) {
-        if (count <  0) throw new IllegalArgumentException("음료는 한 잔 이상 주문해야합니다.");
+        if (count <=  0) throw new IllegalArgumentException("음료는 한 잔 이상 주문해야합니다.");
 
         for (int i = 0; i < count; i++) {
             beverages.add(beverage);
