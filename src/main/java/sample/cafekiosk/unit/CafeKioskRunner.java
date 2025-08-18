@@ -13,7 +13,7 @@ public class CafeKioskRunner {
         cafeKiosk.add(new Latte());
         System.out.println(">>> 라떼 추가");
 
-        int totalPrice = cafeKiosk.calculateTotalPrice();
-        System.out.println(">>> 총 금액:" + totalPrice);
+        /*int totalPrice = cafeKiosk.calculateTotalPrice();*/
+        /*System.out.println(">>> 총 금액:" + totalPrice);*/
     }
 }

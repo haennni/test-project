@@ -2,10 +2,12 @@ package sample.cafekiosk.unit;
 
 import org.junit.jupiter.api.Test;
 import sample.cafekiosk.unit.beverage.Americano;
+import sample.cafekiosk.unit.beverage.Beverage;
 import sample.cafekiosk.unit.beverage.Latte;
 import sample.cafekiosk.unit.order.Order;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
@@ -65,6 +67,21 @@ class CafeKioskTest {
         cafekiosk.clear();
         assertThat(cafekiosk.getBeverages()).hasSize(0);
         assertThat(cafekiosk.getBeverages()).isEmpty();
+    }
+
+    //TDD 적용
+    @Test
+    void calculateTotalPrice() {
+        CafeKiosk cafekiosk = new CafeKiosk();
+        Americano americano = new Americano();
+        Latte latte = new Latte();
+
+        cafekiosk.add(americano);
+        cafekiosk.add(latte);
+
+        int totalPrice = cafekiosk.calculateTotalPrice();
+        assertThat(totalPrice).isEqualTo(americano.getPrice() + latte.getPrice());
+
     }
 
     //해피 케이스 작성

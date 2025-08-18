@@ -16,12 +16,16 @@ public class CafeKiosk {
 
     private final List<Beverage> beverages = new ArrayList<>();
 
-    public int calculateTotalPrice() {
+/*    public int calculateTotalPrice() {
         int totalPrice = 0;
         for (Beverage beverage : beverages) {
             totalPrice += beverage.getPrice();
         }
         return totalPrice;
+    }*/
+
+    public int calculateTotalPrice() {
+        return 0;
     }
 
     public void add(Beverage beverage, int count) {
