@@ -1,5 +1,6 @@
 package sample.cafekiosk.unit;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import sample.cafekiosk.unit.beverage.Americano;
 import sample.cafekiosk.unit.beverage.Beverage;
@@ -69,8 +70,9 @@ class CafeKioskTest {
         assertThat(cafekiosk.getBeverages()).isEmpty();
     }
 
-    //TDD 적용
+
     @Test
+    @DisplayName("주문 목록에 있는 음료의 총 금액을 반환한다.")
     void calculateTotalPrice() {
         CafeKiosk cafekiosk = new CafeKiosk();
         Americano americano = new Americano();
@@ -81,7 +83,6 @@ class CafeKioskTest {
 
         int totalPrice = cafekiosk.calculateTotalPrice();
         assertThat(totalPrice).isEqualTo(americano.getPrice() + latte.getPrice());
-
     }
 
     //해피 케이스 작성
