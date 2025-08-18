@@ -72,16 +72,19 @@ class CafeKioskTest {
 
 
     @Test
-    @DisplayName("주문 목록에 있는 음료의 총 금액을 반환한다.")
+    @DisplayName("주문 목록에 있는 음료의 총 금액을 계산할 수 있다.")
     void calculateTotalPrice() {
+        //given
         CafeKiosk cafekiosk = new CafeKiosk();
         Americano americano = new Americano();
         Latte latte = new Latte();
-
         cafekiosk.add(americano);
         cafekiosk.add(latte);
 
+        // when
         int totalPrice = cafekiosk.calculateTotalPrice();
+
+        // then
         assertThat(totalPrice).isEqualTo(americano.getPrice() + latte.getPrice());
     }
 
@@ -156,5 +159,14 @@ class CafeKioskTest {
         assertThatThrownBy(() -> cafekiosk.createOrder(LocalDateTime.of(2025, 8, 17, 22, 1)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("주문 시간이 아닙니다. 관리자에게 문의하세요.");
+    }
+    @DisplayName("")
+    @Test
+    void test() {
+        // given
+
+        // when
+
+        // then
     }
 }
