@@ -3,11 +3,14 @@ package sample.cafekiosk.unit;
 import org.junit.jupiter.api.Test;
 import sample.cafekiosk.unit.beverage.Americano;
 import sample.cafekiosk.unit.beverage.Latte;
+import sample.cafekiosk.unit.order.Order;
 
+import java.time.LocalDateTime;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 class CafeKioskTest {
-
     @Test
     void manual_add() {
         CafeKiosk cafekiosk = new CafeKiosk();
@@ -62,5 +65,78 @@ class CafeKioskTest {
         cafekiosk.clear();
         assertThat(cafekiosk.getBeverages()).hasSize(0);
         assertThat(cafekiosk.getBeverages()).isEmpty();
+    }
+
+    //해피 케이스 작성
+    @Test
+    void addSeveralBeverages() {
+        CafeKiosk cafekiosk = new CafeKiosk();
+        Americano americano = new Americano();
+        cafekiosk.add(americano, 2);
+
+        assertThat(cafekiosk.getBeverages().get(0)).isEqualTo(americano);
+        assertThat(cafekiosk.getBeverages().get(1)).isEqualTo(americano);
+
+    assertThat(cafekiosk.getBeverages()).hasSize(2);
+    }
+
+    //예외 케이스 작성
+    @Test
+    void addZeroBeverage() {
+        CafeKiosk cafekiosk = new CafeKiosk();
+        Americano americano = new Americano();
+
+        assertThatThrownBy(() -> cafekiosk.add(americano, 0))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("음료는 한 잔 이상 주문해야합니다.");
+    }
+
+/*  //해피 케이스 작성
+    @Test
+    void successCreateOrder() {
+        CafeKiosk cafekiosk = new CafeKiosk();
+        Americano americano = new Americano();
+
+        cafekiosk.add(americano, 2);
+
+        Order order = cafekiosk.createOrder();
+
+        // 주문의 음료 리스트가 비어있지않아야한다.
+        assertThat(order.getOrderItem()).isNotNull();
+        // 주문의 첫 번째 음료 리스트는 아메리카노이다.
+        assertThat(order.getOrderItem().get(0).getName()).isEqualTo("아메리카노");
+        // 주문의 음료는 총 2개이다.
+        assertThat(order.getOrderItem()).hasSize(2);
+    }*/
+
+    //올바른 해피 케이스 작성
+    @Test
+    void createOrderWithCurrentTime() {
+        CafeKiosk cafekiosk = new CafeKiosk();
+        Americano americano = new Americano();
+
+        cafekiosk.add(americano, 2);
+
+        Order order = cafekiosk.createOrder(LocalDateTime.of(2025, 8, 17, 10, 0));
+
+        // 주문의 음료 리스트가 비어있지않아야한다.
+        assertThat(order.getOrderItem()).isNotNull();
+        // 주문의 첫 번째 음료 리스트는 아메리카노이다.
+        assertThat(order.getOrderItem().get(0).getName()).isEqualTo("아메리카노");
+        // 주문의 음료는 총 2개이다.
+        assertThat(order.getOrderItem()).hasSize(2);
+    }
+
+    //올바른 예외 케이스 작성
+    @Test
+    void createOrderOutsideTime() {
+        CafeKiosk cafekiosk = new CafeKiosk();
+        Americano americano = new Americano();
+
+        cafekiosk.add(americano, 2);
+
+        assertThatThrownBy(() -> cafekiosk.createOrder(LocalDateTime.of(2025, 8, 17, 22, 1)))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("주문 시간이 아닙니다. 관리자에게 문의하세요.");
     }
 }
