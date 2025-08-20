@@ -1,4 +1,4 @@
-package sample.cafekiosk.spring.domain.product.dto;
+package sample.cafekiosk.spring.domain.product.dto.request;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

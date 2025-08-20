@@ -5,8 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import sample.cafekiosk.spring.domain.product.ProductRepository;
-import sample.cafekiosk.spring.domain.product.ProductResponse;
+import sample.cafekiosk.spring.domain.product.dto.ProductResponse;
 import sample.cafekiosk.spring.domain.product.dto.request.ProductCreateRequest;
 import sample.cafekiosk.spring.domain.service.ProductService;
 

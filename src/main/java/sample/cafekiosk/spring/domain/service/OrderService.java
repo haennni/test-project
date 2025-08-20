@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import sample.cafekiosk.spring.domain.order.Order;
 import sample.cafekiosk.spring.domain.order.OrderRepository;
 import sample.cafekiosk.spring.domain.product.*;
-import sample.cafekiosk.spring.domain.product.dto.OrderCreateRequest;
+import sample.cafekiosk.spring.domain.product.dto.request.OrderCreateRequest;
 import sample.cafekiosk.spring.domain.product.dto.OrderResponse;
 
 import java.time.LocalDateTime;

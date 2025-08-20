@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import sample.cafekiosk.spring.domain.order.OrderProductRepository;
 import sample.cafekiosk.spring.domain.order.OrderRepository;
-import sample.cafekiosk.spring.domain.product.dto.OrderCreateRequest;
+import sample.cafekiosk.spring.domain.product.dto.request.OrderCreateRequest;
 import sample.cafekiosk.spring.domain.product.dto.OrderResponse;
 import sample.cafekiosk.spring.domain.service.OrderService;
 
