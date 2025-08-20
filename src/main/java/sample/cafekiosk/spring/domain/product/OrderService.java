@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class OrderService {
-    public  createOrder(OrderCreateRequest request) {
+    public OrderResponse createOrder(OrderCreateRequest request) {
+        return null;
     }
 }
