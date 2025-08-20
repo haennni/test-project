@@ -1,5 +1,6 @@
 package sample.cafekiosk.spring.domain.product;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 
 @Getter
