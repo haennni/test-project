@@ -1,6 +1,8 @@
 package sample.cafekiosk.spring.domain.api;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,14 +20,12 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping("/api/v1/products/selling")
-    public List<ProductResponse> getSellingProducts() {
+    public ApiResponse<List<ProductResponse>> getSellingProducts() {
         return productService.getSellingProducts();
     }
 
     @PostMapping("/api/v1/products/new")
-    public void createProduct(@RequestBody ProductCreateRequest request) {
-        // productNumber 만들기
-        // DB에서 마지막 저장된 Product의 상품 번호를 읽어와서 + 1
-
+    public ApiResponse<ProductResponse> createProduct(@Valid @RequestBody ProductCreateRequest request) {
+        return ApiResponse.of(HttpStatus.OK, "성공적으로 생성하였습니다.",productService.createProduct(request));
     }
 }
