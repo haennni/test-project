@@ -5,7 +5,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
@@ -91,7 +90,35 @@ class ProductRepositoryTest {
                         Tuple.tuple("002", "메뉴 이름", 3000));
     }
 
-    private void createProduct(String productNumber, ProductType type, int price) {
+    @DisplayName("가장 마지막으로 저장한 상품의 상품번호를 읽어온다.")
+    @Test
+    void findLatestProductNumber(){
+        // given
+        Product product1 = createProduct("001", ProductType.HANDMADE, SellingStatus.SELLING, "아메리카노", 1000);
+        Product product2 = createProduct("002", ProductType.HANDMADE, SellingStatus.HOLD, "카페라떼",3000);
+        Product product3 = createProduct("003", ProductType.HANDMADE, SellingStatus.STOP_SELLING, "팥빙수",4000);
+        productRepository.saveAll(List.of(product1, product2, product3));
+
+        // when
+        String lastestProduct = productRepository.findLastestProduct();
+
+        // then
+        assertThat(lastestProduct).isEqualTo("003");
+    }
+
+    @DisplayName("가장 마지막으로 저장한 상품의 상품번호를 읽어온다. 상품이 하나도 없는 경우에는 null을 반환한다.")
+    @Test
+    void findLatestProductNumberWhenProductIsEmpty(){
+        // given
+        // when
+        String lastestProduct = productRepository.findLastestProduct();
+
+        // then
+        assertThat(lastestProduct).isNull();
+
+    }
+
+    private Product createProduct(String productNumber, ProductType type, int price) {
         Product product = Product.create(
                 productNumber,
                 type,
@@ -99,6 +126,22 @@ class ProductRepositoryTest {
                 "메뉴 이름",
                 price);
         productRepository.save(product);
+
+        return product;
     }
+
+    private Product createProduct(String productNumber, ProductType type, SellingStatus status, String name, int price) {
+        Product product = Product.create(
+                productNumber,
+                type,
+                status,
+                name,
+                price);
+        productRepository.save(product);
+
+        return product;
+    }
+
+
 }
 

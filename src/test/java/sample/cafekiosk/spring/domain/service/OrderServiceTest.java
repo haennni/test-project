@@ -1,4 +1,4 @@
-package sample.cafekiosk.spring.domain.product;
+package sample.cafekiosk.spring.domain.service;
 
 import org.assertj.core.groups.Tuple;
 import org.junit.jupiter.api.AfterEach;
@@ -9,9 +9,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import sample.cafekiosk.spring.domain.order.OrderProductRepository;
 import sample.cafekiosk.spring.domain.order.OrderRepository;
+import sample.cafekiosk.spring.domain.product.*;
 import sample.cafekiosk.spring.domain.product.dto.request.OrderCreateRequest;
 import sample.cafekiosk.spring.domain.product.dto.OrderResponse;
-import sample.cafekiosk.spring.domain.service.OrderService;
 
 import java.time.LocalDateTime;
 import java.util.List;
