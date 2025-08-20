@@ -1,4 +1,4 @@
-package sample.cafekiosk.spring.domain.product;
+package sample.cafekiosk.spring.domain.order;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

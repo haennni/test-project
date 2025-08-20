@@ -1,10 +1,11 @@
-package sample.cafekiosk.spring.domain.product;
+package sample.cafekiosk.spring.domain.order;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import sample.cafekiosk.spring.domain.BaseEntity;
+import sample.cafekiosk.spring.domain.product.Product;
 
 //중간테이블
 @Getter

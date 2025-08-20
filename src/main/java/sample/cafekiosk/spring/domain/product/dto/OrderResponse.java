@@ -1,6 +1,8 @@
-package sample.cafekiosk.spring.domain.product;
+package sample.cafekiosk.spring.domain.product.dto;
 
 import lombok.Getter;
+import sample.cafekiosk.spring.domain.order.Order;
+import sample.cafekiosk.spring.domain.product.ProductResponse;
 
 import java.time.LocalDateTime;
 import java.util.List;

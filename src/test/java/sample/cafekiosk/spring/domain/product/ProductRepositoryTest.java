@@ -1,5 +1,7 @@
 package sample.cafekiosk.spring.domain.product;
 
+import org.assertj.core.groups.Tuple;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +14,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.tuple;
 
-
 @ActiveProfiles("test")
 @SpringBootTest // 스프링에서 제공하는 통합 테스트를 위한 애노테이션
 // @DataJpaTest
@@ -21,6 +22,11 @@ class ProductRepositoryTest {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @AfterEach
+    void testClear() {
+        productRepository.deleteAllInBatch();
+    }
 
     @DisplayName("원하는 판매상태를 가진 상품들을 조회한다.")
     @Test
@@ -62,8 +68,37 @@ class ProductRepositoryTest {
                         tuple("001", "아메리카노", SellingStatus.SELLING),
                         tuple("002", "카페라떼", SellingStatus.HOLD)
                 );
-                //.containsExactly() //포함되고, 순서까지 일치하는 지 확인*/
+        //.containsExactly() //포함되고, 순서까지 일치하는 지 확인*/
 
 
     }
+
+    @DisplayName("상품번호 리스트로 상품들을 조회한다")
+    @Test
+    void findAllByProductNumberIn(){
+        // given
+        createProduct("001", ProductType.HANDMADE, 1000);
+        createProduct("002", ProductType.HANDMADE, 3000);
+        createProduct("003", ProductType.HANDMADE, 4000);
+
+        // when
+        List<Product> products = productRepository.findAllByProductNumberIn(List.of("001", "002"));
+
+        // then
+        assertThat(products).hasSize(2)
+                .extracting("productNumber", "name", "price")
+                .containsExactlyInAnyOrder(Tuple.tuple("001", "메뉴 이름", 1000),
+                        Tuple.tuple("002", "메뉴 이름", 3000));
+    }
+
+    private void createProduct(String productNumber, ProductType type, int price) {
+        Product product = Product.create(
+                productNumber,
+                type,
+                SellingStatus.SELLING,
+                "메뉴 이름",
+                price);
+        productRepository.save(product);
+    }
 }
+

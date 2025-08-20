@@ -17,6 +17,9 @@ public class ProductResponse {
         this.id = id;
         this.productNumber = productNumber;
         this.productType = productType;
+        this.sellingType = sellingType;
+        this.name = name;
+        this.price = price;
     }
 
     public static ProductResponse of(Product product) {
