@@ -1,4 +1,4 @@
-package sample.cafekiosk.spring.domain.product.dto;
+package sample.cafekiosk.spring.api.controller.product.dto.response;
 
 import lombok.Getter;
 import sample.cafekiosk.spring.domain.product.Product;

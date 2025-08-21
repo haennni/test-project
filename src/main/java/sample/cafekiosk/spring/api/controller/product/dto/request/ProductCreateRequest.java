@@ -1,4 +1,4 @@
-package sample.cafekiosk.spring.domain.product.dto.request;
+package sample.cafekiosk.spring.api.controller.product.dto.request;
 
 import jakarta.validation.constraints.*;
 import lombok.Builder;

@@ -3,11 +3,11 @@ package sample.cafekiosk.spring.api.service.order;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import sample.cafekiosk.spring.api.service.order.dto.request.OrderCreateServiceRequest;
 import sample.cafekiosk.spring.domain.order.Order;
 import sample.cafekiosk.spring.domain.order.OrderRepository;
 import sample.cafekiosk.spring.domain.product.*;
-import sample.cafekiosk.spring.domain.product.dto.request.OrderCreateRequest;
-import sample.cafekiosk.spring.domain.product.dto.OrderResponse;
+import sample.cafekiosk.spring.api.controller.order.dto.response.OrderResponse;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -23,7 +23,7 @@ public class OrderService {
     private final StockRepository stockRepository;
 
     @Transactional
-    public OrderResponse createOrder(OrderCreateRequest request, LocalDateTime registeredDateTime) {
+    public OrderResponse createOrder(OrderCreateServiceRequest request, LocalDateTime registeredDateTime) {
         List<String> productNumbers = request.getProductNumbers();
         List<Product> products = findProductsBy(productNumbers);
         /**

@@ -1,9 +1,9 @@
-package sample.cafekiosk.spring.domain.product.dto.request;
+package sample.cafekiosk.spring.api.controller.order.dto.request;
 
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import sample.cafekiosk.spring.api.service.order.dto.request.OrderCreateServiceRequest;
 
 import java.util.List;
 
@@ -15,5 +15,9 @@ public class OrderCreateRequest {
 
     public OrderCreateRequest(List<String> productNumbers) {
         this.productNumbers = productNumbers;
+    }
+
+    public OrderCreateServiceRequest toServiceRequest() {
+        return new OrderCreateServiceRequest(this.productNumbers);
     }
 }
