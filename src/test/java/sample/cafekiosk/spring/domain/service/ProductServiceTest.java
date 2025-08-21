@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import sample.cafekiosk.spring.domain.product.*;
-import sample.cafekiosk.spring.domain.product.dto.ProductResponse;
-import sample.cafekiosk.spring.domain.product.dto.request.ProductCreateRequest;
+import sample.cafekiosk.spring.api.controller.product.dto.response.ProductResponse;
+import sample.cafekiosk.spring.api.controller.product.dto.request.ProductCreateRequest;
 import sample.cafekiosk.spring.api.service.product.ProductService;
 
 import java.util.List;

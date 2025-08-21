@@ -10,8 +10,8 @@ import org.springframework.test.context.ActiveProfiles;
 import sample.cafekiosk.spring.domain.order.OrderProductRepository;
 import sample.cafekiosk.spring.domain.order.OrderRepository;
 import sample.cafekiosk.spring.domain.product.*;
-import sample.cafekiosk.spring.domain.product.dto.request.OrderCreateRequest;
-import sample.cafekiosk.spring.domain.product.dto.OrderResponse;
+import sample.cafekiosk.spring.api.controller.order.dto.request.OrderCreateRequest;
+import sample.cafekiosk.spring.api.controller.order.dto.response.OrderResponse;
 import sample.cafekiosk.spring.api.service.order.OrderService;
 
 import java.time.LocalDateTime;
