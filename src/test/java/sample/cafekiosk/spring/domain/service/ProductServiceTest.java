@@ -39,11 +39,12 @@ class ProductServiceTest {
         Product product3 = createProduct("003", ProductType.HANDMADE, SellingStatus.STOP_SELLING, "팥빙수",4000);
         productRepository.saveAll(List.of(product1, product2, product3));
 
-        ProductCreateRequest request = new ProductCreateRequest(
-                ProductType.HANDMADE,
-                SellingStatus.SELLING,
-                "카푸치노",
-                5000);
+        ProductCreateRequest request = ProductCreateRequest.builder()
+                .productType(ProductType.HANDMADE)
+                .sellingStatus(SellingStatus.SELLING)
+                .name("카푸치노")
+                .price(5000)
+                .build();
 
         // when
         ProductResponse product = productService.createProduct(request);
@@ -68,11 +69,12 @@ class ProductServiceTest {
     @Test
     void createProductWhenProductsIsEmpty(){
         // given
-        ProductCreateRequest request = new ProductCreateRequest(
-                ProductType.HANDMADE,
-                SellingStatus.SELLING,
-                "카푸치노",
-                5000);
+        ProductCreateRequest request = ProductCreateRequest.builder()
+                .productType(ProductType.HANDMADE)
+                .sellingStatus(SellingStatus.SELLING)
+                .name("카푸치노")
+                .price(5000)
+                .build();
 
         // when
         ProductResponse product = productService.createProduct(request);
