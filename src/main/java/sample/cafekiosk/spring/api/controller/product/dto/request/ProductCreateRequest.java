@@ -4,6 +4,7 @@ import jakarta.validation.constraints.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import sample.cafekiosk.spring.api.service.product.dto.request.ProductCreateServiceRequest;
 import sample.cafekiosk.spring.domain.product.Product;
 import sample.cafekiosk.spring.domain.product.ProductType;
 import sample.cafekiosk.spring.domain.product.SellingStatus;
@@ -35,5 +36,9 @@ public class ProductCreateRequest {
 
     public Product toEntity(String number) {
         return Product.create(number, productType, sellingStatus, name, price);
+    }
+
+    public ProductCreateServiceRequest toServiceRequest() {
+        return new ProductCreateServiceRequest(productType, sellingStatus, name, price);
     }
 }

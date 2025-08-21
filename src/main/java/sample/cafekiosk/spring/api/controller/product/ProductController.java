@@ -27,6 +27,6 @@ public class ProductController {
 
     @PostMapping("/api/v1/products/new")
     public ApiResponse<ProductResponse> createProduct(@Valid @RequestBody ProductCreateRequest request) {
-        return ApiResponse.of(HttpStatus.OK, "성공적으로 생성하였습니다.", productService.createProduct(request));
+        return ApiResponse.of(HttpStatus.OK, "성공적으로 생성하였습니다.", productService.createProduct(request.toServiceRequest()));
     }
 }
