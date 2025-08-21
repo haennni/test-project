@@ -2,6 +2,7 @@ package sample.cafekiosk.spring.domain.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import sample.cafekiosk.spring.domain.product.Product;
 import sample.cafekiosk.spring.domain.product.ProductRepository;
 import sample.cafekiosk.spring.domain.product.dto.ProductResponse;
@@ -11,11 +12,13 @@ import sample.cafekiosk.spring.domain.product.dto.request.ProductCreateRequest;
 import java.util.List;
 
 @Service
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class ProductService {
 
     private final ProductRepository productRepository;
 
+    @Transactional
     public List<ProductResponse> getSellingProducts() {
         List<Product> products =
                 productRepository.findAllBySellingStatusIn(SellingStatus.forDisplay());

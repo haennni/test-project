@@ -1,8 +1,7 @@
 package sample.cafekiosk.spring.domain.product.dto.request;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import sample.cafekiosk.spring.domain.product.Product;
@@ -10,6 +9,7 @@ import sample.cafekiosk.spring.domain.product.ProductType;
 import sample.cafekiosk.spring.domain.product.SellingStatus;
 
 @Getter
+@Builder
 @NoArgsConstructor
 public class ProductCreateRequest {
 
@@ -25,7 +25,8 @@ public class ProductCreateRequest {
     @Positive(message = "상품 가격은 양수여야 합니다.")
     private int price;
 
-    public ProductCreateRequest(ProductType productType, SellingStatus sellingStatus, String name, int price) {
+    @Builder
+    private ProductCreateRequest(ProductType productType, SellingStatus sellingStatus, String name, int price) {
         this.productType = productType;
         this.sellingStatus = sellingStatus;
         this.name = name;

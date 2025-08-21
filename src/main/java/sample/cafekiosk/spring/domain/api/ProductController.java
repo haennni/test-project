@@ -21,7 +21,7 @@ public class ProductController {
 
     @GetMapping("/api/v1/products/selling")
     public ApiResponse<List<ProductResponse>> getSellingProducts() {
-        return productService.getSellingProducts();
+        return ApiResponse.of(HttpStatus.OK, productService.getSellingProducts());
     }
 
     @PostMapping("/api/v1/products/new")
