@@ -1,4 +1,4 @@
-package sample.cafekiosk.spring.domain.api;
+package sample.cafekiosk.spring.api.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -6,9 +6,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import sample.cafekiosk.spring.api.ApiResponse;
 import sample.cafekiosk.spring.domain.product.dto.request.OrderCreateRequest;
 import sample.cafekiosk.spring.domain.product.dto.OrderResponse;
-import sample.cafekiosk.spring.domain.service.OrderService;
+import sample.cafekiosk.spring.api.service.order.OrderService;
 
 import java.time.LocalDateTime;
 

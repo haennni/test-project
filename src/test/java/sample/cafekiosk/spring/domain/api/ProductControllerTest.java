@@ -10,12 +10,12 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
-import sample.cafekiosk.spring.domain.product.ProductRepository;
+import sample.cafekiosk.spring.api.controller.ProductController;
 import sample.cafekiosk.spring.domain.product.ProductType;
 import sample.cafekiosk.spring.domain.product.SellingStatus;
 import sample.cafekiosk.spring.domain.product.dto.ProductResponse;
 import sample.cafekiosk.spring.domain.product.dto.request.ProductCreateRequest;
-import sample.cafekiosk.spring.domain.service.ProductService;
+import sample.cafekiosk.spring.api.service.product.ProductService;
 
 import java.util.List;
 

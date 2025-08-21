@@ -1,4 +1,4 @@
-package sample.cafekiosk.spring.domain.service;
+package sample.cafekiosk.spring.api.service.order;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

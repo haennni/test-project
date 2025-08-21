@@ -10,6 +10,7 @@ import org.springframework.test.context.ActiveProfiles;
 import sample.cafekiosk.spring.domain.product.*;
 import sample.cafekiosk.spring.domain.product.dto.ProductResponse;
 import sample.cafekiosk.spring.domain.product.dto.request.ProductCreateRequest;
+import sample.cafekiosk.spring.api.service.product.ProductService;
 
 import java.util.List;
 

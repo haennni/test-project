@@ -1,4 +1,4 @@
-package sample.cafekiosk.spring.domain.api;
+package sample.cafekiosk.spring.api.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -7,9 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import sample.cafekiosk.spring.api.ApiResponse;
 import sample.cafekiosk.spring.domain.product.dto.ProductResponse;
 import sample.cafekiosk.spring.domain.product.dto.request.ProductCreateRequest;
-import sample.cafekiosk.spring.domain.service.ProductService;
+import sample.cafekiosk.spring.api.service.product.ProductService;
 
 import java.util.List;
 
