@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+import sample.cafekiosk.spring.api.service.order.dto.request.OrderCreateServiceRequest;
 import sample.cafekiosk.spring.domain.order.OrderProductRepository;
 import sample.cafekiosk.spring.domain.order.OrderRepository;
 import sample.cafekiosk.spring.domain.product.*;
@@ -55,7 +56,7 @@ class OrderServiceTest {
         createProduct("002", ProductType.HANDMADE, 3000);
         createProduct("003", ProductType.HANDMADE, 4000);
 
-        OrderCreateRequest request = new OrderCreateRequest(List.of("001", "002"));
+        OrderCreateServiceRequest request = new OrderCreateServiceRequest(List.of("001", "002"));
         LocalDateTime now = LocalDateTime.now();
         // when
 
@@ -81,7 +82,7 @@ class OrderServiceTest {
         createProduct("002", ProductType.HANDMADE, 3000);
         createProduct("003", ProductType.HANDMADE, 4000);
 
-        OrderCreateRequest request = new OrderCreateRequest(List.of("001", "001"));
+        OrderCreateServiceRequest request = new OrderCreateServiceRequest(List.of("001", "001"));
         LocalDateTime now = LocalDateTime.now();
 
         // when
@@ -113,7 +114,7 @@ class OrderServiceTest {
         stockRepository.saveAll(List.of(stock1, stock2));
 
 
-        OrderCreateRequest request = new OrderCreateRequest(List.of("001", "002", "001", "003"));
+        OrderCreateServiceRequest request = new OrderCreateServiceRequest(List.of("001", "002", "001", "003"));
         LocalDateTime now = LocalDateTime.now();
         // when
 
@@ -153,7 +154,7 @@ class OrderServiceTest {
         Stock stock2 = Stock.create("002", 1);
         stockRepository.saveAll(List.of(stock1, stock2));
 
-        OrderCreateRequest request = new OrderCreateRequest(List.of("001", "002", "001", "003"));
+        OrderCreateServiceRequest request = new OrderCreateServiceRequest(List.of("001", "002", "001", "003"));
         LocalDateTime now = LocalDateTime.now();
 
         // when & then
